@@ -1,0 +1,6 @@
+{
+    "board": "arduino:avr:uno",
+    "port": "COM8",
+    "programmer": "AVRISP mkII",
+    "sketch": "line_follow_robot\\main.cpp"
+}

@@ -11,13 +11,17 @@ LedControl led2(11);
 LedControl builtInLed(13);
 IRSensorControl lineSensor(7);
 
-AccelStepper testMotor(1, 5, 4); // pin 5 = step, pin 4 = direction
+AccelStepper leftMotor(1, 5, 4); // pin 5 = step, pin 4 = direction
+AccelStepper rightMotor(1, 11, 10); // pin 11 = step, pin 10 = direction
 
 
 void setup()
 {
-    testMotor.setMaxSpeed(400);
-    testMotor.setSpeed(400);
+    leftMotor.setMaxSpeed(400);
+    leftMotor.setSpeed(400);
+
+    rightMotor.setMaxSpeed(400);
+    rightMotor.setSpeed(200);
 
 }
 
@@ -25,12 +29,17 @@ void loop()
 {
     if (lineSensor.detectLine()) {
         builtInLed.TurnOn();
+        leftMotor.setSpeed(400);
+        rightMotor.setSpeed(200);
     } else
     {
+        leftMotor.setSpeed(200);
+        rightMotor.setSpeed(400);
         builtInLed.TurnOff();
     }
 
-    testMotor.runSpeed();
+    rightMotor.runSpeed();
+    leftMotor.runSpeed();
 }
 
 
